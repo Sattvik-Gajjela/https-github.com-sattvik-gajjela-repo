@@ -27,13 +27,16 @@ class InteractionLayer : Layer, KeyDownHandler
     {   
         paddleLeft.move(to:Point(x: 100, y: 480))
         paddleRight.move(to:Point(x: 1000, y: 1650))
-        paddleTop.move(to:Point(x: 500, y: canvasSize.center))
+        paddleTop.move(to:Point(x: 500, y: 1400))
         paddleBottom.move(to:Point(x: 500, y: 1000))
         dispatcher.registerKeyDownHandler(handler: self)
 
     }
 
-    func onKeyDown(key:String, code:String, ctrlKey:Bool, shiftKey:Bool, metaKey:Bool)
+
+
+
+    func onKeyDown(key:String, code:String, ctrlKey:Bool, shiftKey:Bool, altKey:Bool, metaKey:Bool) -> ()
     {   
         print(key)
         let tlpl = paddleLeft.rectangle.rect.topLeft
@@ -64,7 +67,7 @@ class InteractionLayer : Layer, KeyDownHandler
     }
 
 
-    override func postTearDown()
+    func postTearDown()
     {   
         dispatcher.unregisterKeyDownHandler(handler: self)
     }
